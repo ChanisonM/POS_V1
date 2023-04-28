@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRINT</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="slip-container">
+        <h2 class="slip-header">ร้านอาหาร</h2>
+        <div id="list">
+            
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script>
+        var list = JSON.parse(localStorage.menulist)
+
+        console.log(list);
+
+        var html = "";
+        var sumprice = 0
+        for (let i = 0; i < list.length; i++) {
+            sumprice += list[i]["price"] * list[i].count
+            html += `
+            <div class="list-items">
+                    <p>[x ${list[i].count}] ${list[i]["menu"]}</p>
+                    <p>${numberWithCommas(list[i]["price"] * list[i].count)}  THB</p >
+            </div>
+            `;
+        }
+        html += `
+            <div class="list-items list-summary">
+                <p>รวมราคา</p>
+                <p>${numberWithCommas(sumprice)} THB</p>
+            </div>
+        `;
+        $("#list").html(html).promise().done(()=>{
+            window.print()
+        });
+
+
+        function numberWithCommas(x) {
+            x = x.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+            while (pattern.test(x))
+                x = x.replace(pattern, "$1,$2");
+            return x;
+        }
+    </script>
+</body>
+
+</html>
