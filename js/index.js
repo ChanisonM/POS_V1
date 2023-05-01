@@ -88,7 +88,7 @@ function func_seleteproduct(menu_id, menu_name, menu_price) {
         <div class="list-items">
                 <p>[x ${list[i].count}] ${list[i]["menu"]}</p>
                 <p>${numberWithCommas(list[i]["price"] * list[i].count)}  THB</p>
-                <button onclick="func_decrement_item(${menu[i]["id"]} , ${list[i].count})">ลบ</button>
+                <button class="decrement_item_btn" onclick="func_decrement_item(${menu[i]["id"]} ,'${menu[i]["name"]}', ${list[i].count})">ลบ</button>
         </div>
         `;
   }
@@ -103,13 +103,13 @@ function func_seleteproduct(menu_id, menu_name, menu_price) {
 }
 
 // Stat :: ลบจำนวนรายการสินค้า
-function func_decrement_item(menu_id , menu_count){
+function func_decrement_item(menu_id ,menu_name, menu_count){
   item_id = menu_id
+  item_name = menu_name
   item_count = menu_count
 
   decrement_item = menu_count-1
-  
-  console.log(decrement_item);
+
 
 }
 // End :: ลบจำนวนรายการสินค้า

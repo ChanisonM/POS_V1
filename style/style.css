@@ -83,6 +83,22 @@ body{
     color: white;
 }
 
+.decrement_item_btn{
+    width: 50px;
+    cursor: pointer;
+    outline: none;
+    border: red solid 2px;
+    color: red;
+}
+.decrement_item_btn:hover{
+    cursor: pointer;
+    outline: none;
+    border: red solid 2px;
+    color: white;
+    background: red;
+
+}
+
 .slip-container{
     width: 300px; 
     margin: 0 auto;
